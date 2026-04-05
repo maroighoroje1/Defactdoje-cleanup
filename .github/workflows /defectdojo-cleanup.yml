@@ -1,0 +1,23 @@
+name: DefectDojo Cleanup
+
+on:
+  schedule:
+    - cron: '0 0 * * *'    # runs every day at midnight UTC
+  workflow_dispatch:         # allows manual trigger from GitHub UI
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python dependency
+        run: pip install requests
+
+      - name: Run cleanup
+        env:
+          DEFECTDOJO_URL: ${{ secrets.DEFECTDOJO_URL }}
+          DEFECTDOJO_TOKEN: ${{ secrets.DEFECTDOJO_TOKEN }}
+          RETENTION_DAYS: 7       # delete tests older than this
+        run: python3 defectdojo-cleanup.py
