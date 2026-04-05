@@ -7,7 +7,7 @@ DEFECTDOJO_URL = os.getenv("DEFECTDOJO_URL")
 DEFECTDOJO_TOKEN = os.getenv("DEFECTDOJO_TOKEN")
 RETENTION_DAYS = int(os.getenv("RETENTION_DAYS", 7))
 
-ENGAGEMENTS_TO_CLEAN = [2, 3]   # 2 = Semgrep, 3 = Trivy
+ENGAGEMENTS_TO_CLEAN = [2, 4]  
 
 headers = {
     "Authorization": f"Token {DEFECTDOJO_TOKEN}",
