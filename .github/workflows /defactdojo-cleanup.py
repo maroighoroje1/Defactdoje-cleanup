@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
-    branches:
-      - main
 
 jobs:
   cleanup:
@@ -22,4 +20,4 @@ jobs:
           DEFECTDOJO_URL: ${{ secrets.DEFECTDOJO_URL }}
           DEFECTDOJO_TOKEN: ${{ secrets.DEFECTDOJO_TOKEN }}
           RETENTION_DAYS: 7
-        run: python3 defectdojo-cleanup.py
+        run: python3 defactdojo-cleanup.py
